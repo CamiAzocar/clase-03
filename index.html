@@ -27,7 +27,7 @@
         // Porque depende de otra fuente de datos que, a su vez, espera todos los comunicados oficiales para actualizar.
         // Revisar - https://github.com/pomber/covid19
 
-        var casos, chilenos;
+        var casos, nicaragüenses;
 
         function preload() {
             casos = loadJSON(url);
@@ -42,7 +42,7 @@
                 Chile se escribe igual en castellano e inglés, no así Japan, Philippines, Russia, etc.
                 El resultado de la búsqueda es lo que asigno como contenido a la variable chilenos.
             */
-            chilenos = casos.Chile;
+            nicaragüenses = casos.Nicaragua;
             console.log("Casos confirmados:");
         }
 
@@ -52,15 +52,15 @@
             /*
                 A continuación, mediante un ciclo for, imprimiré los números de casos informados por la autoridad en distintas fechas, a condición de que los casos sean distintos de 0. Pueden asomarse a la Consola de JavaScript para ver el resultado y evolución en el tiempo.
             */
-            for (var i = 0; i < chilenos.length; i++) {
-                if (chilenos[i].confirmed != 0) {
-                    console.log(chilenos[i].confirmed.toLocaleString('es-ES') + " @ " + chilenos[i].date); // Uso la función toLocaleString para tener miles con punto, por defecto no los tendría.
+            for (var i = 0; i < nicaragüenses.length; i++) {
+                if (nicaragüenses[i].confirmed != 0) {
+                    console.log(nicaragüenses[i].confirmed.toLocaleString('es-ES') + " @ " + nicaragüenses[i].date); // Uso la función toLocaleString para tener miles con punto, por defecto no los tendría.
                 }
             }
 
             textSize(24);
             textAlign(CENTER);
-            text("Hasta el día de ayer, había " + chilenos[chilenos.length - 1].confirmed.toLocaleString('es-ES') + " casos confirmados de COVID-19 en Chile.", width / 2, height / 2);
+            text("Hasta el día de ayer, había " + nicaragüenses[nicaragüenses.length - 1].confirmed.toLocaleString('es-ES') + " casos confirmados de COVID-19 en Chile.", width / 2, height / 2);
             /*
                 En la línea de arriba creo un texto dentro del canvas (ya creado en línea 39).
                 Esto NO es lo mismo que crear un párrafo fuera del canvas. 
