@@ -27,7 +27,7 @@
         // Revisar - https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
         
         var temblores;
-        var chilenos = [];
+        var nicaragüenses = [];
 
         function preload() {
             temblores = loadJSON(url);
@@ -45,12 +45,12 @@
                 Si lo incluye, se toma la descripción del evento y se mete al arreglo chilenos.
             */
             for (var n = 0; n < temblores.features.length; n++) {
-                if (temblores.features[n].properties.place.includes("Chile")) {
-                    chilenos.push(temblores.features[n].properties);
+                if (temblores.features[n].properties.place.includes("Nicaragua")) {
+                    nicaragüenses.push(temblores.features[n].properties);
                 }
             }
-            console.log(chilenos); // Pueden ver en la consola el arreglo resultante
-            console.log("El más reciente fue el de " + chilenos[0].title + " — " + chilenos[0].url);
+            console.log(nicaragüenses); // Pueden ver en la consola el arreglo resultante
+            console.log("El más reciente fue el de " + nicaragüenses[0].title + " — " + nicaragüenses[0].url);
         }
 
         function draw() {
@@ -58,7 +58,7 @@
             background(random(0, 360), 50, 100);
             textSize(24);
             textAlign(CENTER);
-            text("Hay " + chilenos.length + " temblores +4.5M registrados el último mes en Chile.", width / 2, height / 2);
+            text("Hay " + nicaragüenses.length + " temblores +4.5M registrados el último mes en Nicaragua.", width / 2, height / 2);
             /*
                 En la línea de arriba creo un texto dentro del canvas (ya creado en línea 39).
                 Esto NO es lo mismo que crear un párrafo fuera del canvas. 
