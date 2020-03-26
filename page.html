@@ -23,9 +23,7 @@
 
     <script>
         var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
-        // Existe una demora de 5 minutos en su actualización
-        // Revisar - https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
-        
+            
         var temblores;
         var nicaragüenses = [];
 
@@ -34,22 +32,17 @@
         }
 
         function setup() {
-            noLoop(); // Esta función afectará al draw(). No se redibujará, solo se dibujará una vez.
-            createP(url).position(27,18).style('font-size', 12+"px"); // Creo un párrafo cuyo texto es el contenido de la variable url
+            noLoop(); 
+            createP(url).position(27,18).style('font-size', 12+"px"); 
             createCanvas(windowWidth, windowHeight).position(0, 0).style('z-index', -1);
             console.log("Arreglo de temblores registrados:");
-            /*  
-                A continuación exploraré la variable temblores con un ciclo (for).
-                Esta variable ya tiene, a la manera que sirve a JavaScript, lo del JSON.
-                En la exploración preguntaré a cada evento si acaso incluye "Chile".
-                Si lo incluye, se toma la descripción del evento y se mete al arreglo chilenos.
-            */
+            
             for (var n = 0; n < temblores.features.length; n++) {
                 if (temblores.features[n].properties.place.includes("Nicaragua")) {
                     nicaragüenses.push(temblores.features[n].properties);
                 }
             }
-            console.log(nicaragüenses); // Pueden ver en la consola el arreglo resultante
+            console.log(nicaragüenses); 
             console.log("El más reciente fue el de " + nicaragüenses[0].title + " — " + nicaragüenses[0].url);
         }
 
@@ -59,11 +52,7 @@
             textSize(24);
             textAlign(CENTER);
             text("Hay " + nicaragüenses.length + " temblores +4.5M registrados el último mes en Nicaragua.", width / 2, height / 2);
-            /*
-                En la línea de arriba creo un texto dentro del canvas (ya creado en línea 39).
-                Esto NO es lo mismo que crear un párrafo fuera del canvas. 
-                Inspecciona elementos en tu navegador para aclarar la diferencia.
-            */            
+                      
         }
 
         function windowResized() {
